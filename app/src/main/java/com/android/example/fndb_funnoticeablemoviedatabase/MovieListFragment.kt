@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.android.example.fndb_funnoticeablemoviedatabase.database.Movies
 import com.android.example.fndb_funnoticeablemoviedatabase.databinding.FragmentMovieListBinding
 import com.android.example.fndb_funnoticeablemoviedatabase.databinding.MovieListItemBinding
@@ -16,18 +17,17 @@ import com.android.example.fndb_funnoticeablemoviedatabase.databinding.MovieList
 class MovieListFragment : Fragment() {
 
     private var _binding: FragmentMovieListBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+  //): View? {
 
         //  ?? 14-04-2021 RECORDING
         // _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_first, container, false)
+
         // Inflate the layout for this fragment
         _binding = FragmentMovieListBinding.inflate(inflater, container, false)
 
@@ -39,7 +39,10 @@ class MovieListFragment : Fragment() {
                 container,
             false)
             movieListItemBinding.movie = movie
-
+            movieListItemBinding.root.setOnClickListener{
+                //this.findNavController().navigate(MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(movie))
+                this.findNavController().navigate(MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(movie))
+            }
             binding.movieListLl.addView(movieListItemBinding.root)
         }
 
