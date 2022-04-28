@@ -48,6 +48,8 @@ class MovieDetailFragment : Fragment() {
         binding.backToMovieListButton.setOnClickListener {
             findNavController().navigate(MovieDetailFragmentDirections.actionMovieDetailFragmentToMovieListFragment())
         }
+
+        //Uncomment when adding ThirdFragment
 /*
         binding.toThirdFragmentButton.setOnClickListener {
             findNavController().navigate(MovieDetailFragmentDirections.actionMovieDetailFragmentToThirdFragment())
